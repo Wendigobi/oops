@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gotcha! – Phishing Awareness</title>
+  <style>
+    body {
+      font-family: "Trebuchet MS", sans-serif;
+      background: url("https://i.ibb.co/8P9gZ2H/halloween-bg.jpg") no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      text-align: center;
+      padding: 0;
+      margin: 0;
+    }
+    .overlay {
+      background: rgba(0, 0, 0, 0.75);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .card {
+      background: rgba(30, 30, 30, 0.9);
+      border-radius: 16px;
+      padding: 2rem;
+      max-width: 700px;
+      box-shadow: 0 0 20px #ff6600;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #ff6600;
+      text-shadow: 0 0 10px #ff3300;
+    }
+    .emoji {
+      font-size: 3rem;
+    }
+    .lesson {
+      margin: 1.5rem 0;
+      background: #ffcc00;
+      color: #222;
+      padding: 1rem;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+    ul {
+      text-align: left;
+      margin: 1.5rem auto;
+      max-width: 500px;
+      line-height: 1.6;
+    }
+    li::before {
+      content: "👻 ";
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.8rem 1.6rem;
+      background: #ff6600;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      box-shadow: 0 0 10px #ff3300;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .btn:hover {
+      background: #cc5200;
+      transform: scale(1.05);
+    }
+    .footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <div class="card">
+      <div class="emoji">🕷️🕸️</div>
+      <h1>🎃 Gotcha! 🎃</h1>
+      <p>You clicked a link that *looked* like YouTube… but it wasn’t!<br>
+      Don’t worry — this one is just for fun. 👻</p>
+
+      <div class="lesson">
+        This is how **phishing works**: hackers dress up malicious links in disguises.<br>
+        (Kinda like Halloween costumes 🎭)
+      </div>
+
+      <h2>⚠️ How Hackers Trick You:</h2>
+      <ul>
+        <li>Spooky “urgent” messages 👀</li>
+        <li>Fake login pages that *look* real 🕵️</li>
+        <li>Disguised links like the one you just clicked 🕸️</li>
+      </ul>
+
+      <h2>🛡️ How to Stay Safe:</h2>
+      <ul>
+        <li>Hover over links before you click.</li>
+        <li>Double-check the sender’s email.</li>
+        <li>Never share your password — even with IT!</li>
+      </ul>
+
+      <a class="btn" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
+        Back to “Safety”
+      </a>
+
+      <div class="footer">
+        👻 Happy Halloween! Stay spooky, stay safe. – Your IT Team 🎃
+      </div>
+    </div>
+  </div>
+</body>
+</html>
