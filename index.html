@@ -96,32 +96,6 @@
   @keyframes fly {from{transform:translateX(-12vw);}to{transform:translateX(112vw);}}
   @keyframes flap {0%,100%{transform:rotate(0);}50%{transform:rotate(4deg);}}
 
-  /* Ghosts */
-  .ghost {
-    position:fixed; bottom:10%; left:-15vw;
-    width:60px; height:80px;
-    background:#fff;
-    border-radius:50% 50% 40% 40% / 60% 60% 40% 40%;
-    opacity:.8;
-    animation: drift 25s linear infinite;
-    box-shadow: 0 0 20px rgba(255,255,255,.5);
-  }
-  .ghost::before, .ghost::after {
-    content:""; position:absolute; bottom:-15px; width:18px; height:18px;
-    background:#fff; border-radius:50%; left:5px;
-  }
-  .ghost::after {left:auto; right:5px;}
-  .ghost .eyes {
-    position:absolute; top:25px; left:50%; transform:translateX(-50%);
-    display:flex; gap:12px;
-  }
-  .ghost .eyes span {
-    width:10px; height:14px; background:#000; border-radius:50%;
-  }
-  .ghost.g2 {width:40px; height:60px; animation-duration:35s; top:20%;}
-  .ghost.g3 {width:50px; height:70px; animation-duration:28s; top:40%;}
-  @keyframes drift {from{transform:translateX(-15vw);}to{transform:translateX(115vw);}}
-
   /* Spider */
   .spider {
     position:fixed; left:85%; top:-140px; width:22px; height:22px;
@@ -162,11 +136,6 @@
   <div class="bat"></div>
   <div class="bat b2"></div>
   <div class="bat b3"></div>
-
-  <!-- Ghosts -->
-  <div class="ghost"><div class="eyes"><span></span><span></span></div></div>
-  <div class="ghost g2"><div class="eyes"><span></span><span></span></div></div>
-  <div class="ghost g3"><div class="eyes"><span></span><span></span></div></div>
 
   <!-- Spider -->
   <div class="spider">
