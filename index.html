@@ -4,231 +4,224 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Gotcha! – Phishing Awareness (Halloween)</title>
-<meta name="color-scheme" content="dark">
 <style>
-  :root{
-    --bg:#000;
-    --panel:#101010;
-    --orange:#ff6a00;
-    --orange-2:#ff9a3c;
-    --yellow:#ffd166;
-    --text:#ffffff;
-    --muted:#aaaaaa;
+  :root {
+    --bg: #000;
+    --panel: #101010;
+    --orange: #ff6a00;
+    --yellow: #ffd166;
+    --text: #ffffff;
+    --muted: #aaaaaa;
     --glow: 0 0 18px var(--orange);
   }
-
-  /* Base layout */
-  html,body{height:100%}
-  body{
-    margin:0; font-family: system-ui, "Trebuchet MS", Segoe UI, Roboto, Arial, sans-serif;
-    color:var(--text); background:var(--bg); overflow-x:hidden;
-  }
-
-  /* Animated background halo */
-  .bg-halo{
-    position:fixed; inset:-20% -10% -10% -10%;
-    background:
-      radial-gradient(1200px 400px at 20% -10%, rgba(255,106,0,.12), transparent 60%),
-      radial-gradient(1000px 500px at 80% 110%, rgba(255,154,60,.10), transparent 60%),
-      radial-gradient(600px 600px at 50% 40%, rgba(255,106,0,.08), transparent 70%);
-    filter:saturate(120%);
-    animation: haloMove 18s ease-in-out infinite alternate;
-    pointer-events:none;
-  }
-  @keyframes haloMove{
-    0%{transform:translateY(0)}
-    100%{transform:translateY(12px)}
+  html, body {height:100%;}
+  body {
+    margin:0;
+    font-family: "Trebuchet MS", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x:hidden;
   }
 
   /* Container & card */
-  .wrap{
-    min-height:100%;
-    display:grid; place-items:center; padding:2rem;
-  }
-  .card{
+  .wrap {min-height:100%; display:grid; place-items:center; padding:2rem;}
+  .card {
     width:min(760px, 92vw);
-    background:linear-gradient(180deg, #111 0%, #0b0b0b 100%);
+    background:#111;
     border:2px solid var(--orange);
     border-radius:18px;
-    padding:2.2rem;
-    box-shadow: 0 0 0 2px rgba(255,106,0,.15), 0 18px 50px rgba(0,0,0,.6), var(--glow);
-    position:relative;
-    isolation:isolate;
+    padding:2rem;
+    box-shadow: 0 0 25px var(--orange);
     animation: float 6s ease-in-out infinite;
   }
-  @keyframes float{
-    0%,100%{ transform: translateY(0) }
-    50%{ transform: translateY(-6px) }
-  }
+  @keyframes float {0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
 
-  /* Header with flicker effect */
-  h1{
-    margin:0 0 .2rem; font-size:clamp(2.2rem, 4vw, 3rem); letter-spacing:.5px;
-    color:var(--orange);
+  /* Header flicker */
+  h1 {
+    font-size:2.5rem;
+    margin:0 0 .5rem;
+    color: var(--orange);
     text-shadow: 0 0 10px #ff3d00, 0 0 20px #ff3d00;
-    animation: flicker 3.5s infinite;
+    animation:flicker 3.5s infinite;
   }
-  @keyframes flicker{
-    0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity:1; }
-    20%, 24%, 55% { opacity:.35; }
+  @keyframes flicker {
+    0%,18%,22%,25%,53%,57%,100% {opacity:1;}
+    20%,24%,55% {opacity:.35;}
   }
-
-  .subtle{
-    color:var(--muted);
-    margin:0 0 1.2rem;
-  }
-
-  .lesson{
-    margin:1.2rem 0 1.4rem;
-    background: linear-gradient(90deg, var(--orange), var(--orange-2));
+  h2 {color:var(--yellow); margin-top:1.2rem;}
+  .lesson {
+    margin:1.2rem 0;
+    background: var(--orange);
     color:#000;
-    font-weight:700;
-    padding:1rem 1.1rem;
+    padding:1rem;
     border-radius:10px;
-    box-shadow: 0 8px 24px rgba(255,106,0,.25);
+    font-weight:bold;
+    box-shadow:0 8px 24px rgba(255,106,0,.25);
+  }
+  ul {text-align:left; max-width:500px; margin:1rem auto; line-height:1.6;}
+  li::marker {content:"🎃 ";}
+
+  .cta {
+    display:inline-block;
+    margin-top:1rem;
+    padding:.85rem 1.2rem;
+    background: var(--orange);
+    color:#000;
+    text-decoration:none;
+    border-radius:12px;
+    font-weight:bold;
+    animation:pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% {box-shadow:0 0 0 0 rgba(255,106,0,.45);}
+    50% {box-shadow:0 0 0 12px rgba(255,106,0,0);}
   }
 
-  h2{
-    margin:1.1rem 0 .6rem;
-    color:var(--yellow);
-    font-size:1.15rem;
-    letter-spacing:.3px;
-  }
+  .footer {margin-top:1.5rem; color:var(--muted);}
 
-  ul{
-    margin:.2rem auto 1.1rem; padding-left:1.1rem; max-width:48ch; line-height:1.6;
-  }
-  li{margin:.35rem 0}
-  li::marker{content:"🎃  "}
-
-  .cta{
-    display:inline-block; margin-top:1rem;
-    background:var(--orange);
-    color:#000; font-weight:800; text-decoration:none;
-    padding:.85rem 1.2rem; border-radius:12px;
-    box-shadow: 0 10px 22px rgba(255,106,0,.35), inset 0 -2px 0 rgba(0,0,0,.25);
-    transform: translateZ(0);
-    transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
-    animation: pulse 1.8s ease-in-out infinite;
-  }
-  .cta:hover{ transform: translateY(-2px); background:#e65f00 }
-  @keyframes pulse{
-    0%,100%{ box-shadow: 0 0 0 0 rgba(255,106,0,.45) }
-    50%{ box-shadow: 0 0 0 12px rgba(255,106,0,0) }
-  }
-
-  .footer{ margin-top:1.4rem; color:var(--muted); font-size:.92rem }
-
-  /* Bats (pure CSS/inline SVG) */
-  .bat{
-    position:fixed; top:12%; left:-10vw; width:34px; height:18px; opacity:.85;
+  /* Bats */
+  .bat {
+    position:fixed; top:20%; left:-10vw; width:34px; height:18px;
     background:
       radial-gradient(circle at 50% 100%, #0000 10px, transparent 11px),
       radial-gradient(10px 10px at 10px 9px, #000 99%, #0000 100%),
       radial-gradient(10px 10px at 24px 9px, #000 99%, #0000 100%),
       linear-gradient(#000 0 0) center / 34px 6px no-repeat;
-    filter: drop-shadow(0 0 6px rgba(255,106,0,.25));
-    transform-origin:50% 50%;
     animation: fly 18s linear infinite, flap .8s ease-in-out infinite;
+    opacity:.85;
     pointer-events:none;
   }
-  .bat.b2{ top:28%; animation-duration: 22s; animation-delay: -2s; transform: scale(.9); }
-  .bat.b3{ top:48%; animation-duration: 16s; animation-delay: -6s; transform: scale(1.15); opacity:.7 }
-  @keyframes fly{
-    from{ transform: translateX(-12vw) }
-    to{ transform: translateX(112vw) }
-  }
-  @keyframes flap{
-    0%,100%{ transform: rotate(0) }
-    50%{ transform: rotate(4deg) }
-  }
+  .bat.b2 {top:35%; animation-duration:22s;}
+  .bat.b3 {top:50%; animation-duration:16s;}
+  @keyframes fly {from{transform:translateX(-12vw);}to{transform:translateX(112vw);}}
+  @keyframes flap {0%,100%{transform:rotate(0);}50%{transform:rotate(4deg);}}
 
-  /* Spider drop */
-  .spider{
-    --x: 88%;
-    position:fixed; left:var(--x); top:-140px; width:22px; height:22px; z-index:2;
+  /* Ghosts */
+  .ghost {
+    position:fixed; bottom:10%; left:-15vw;
+    width:60px; height:80px;
+    background:#fff;
+    border-radius:50% 50% 40% 40% / 60% 60% 40% 40%;
+    opacity:.8;
+    animation: drift 25s linear infinite;
+    box-shadow: 0 0 20px rgba(255,255,255,.5);
+  }
+  .ghost::before, .ghost::after {
+    content:""; position:absolute; bottom:-15px; width:18px; height:18px;
+    background:#fff; border-radius:50%; left:5px;
+  }
+  .ghost::after {left:auto; right:5px;}
+  .ghost .eyes {
+    position:absolute; top:25px; left:50%; transform:translateX(-50%);
+    display:flex; gap:12px;
+  }
+  .ghost .eyes span {
+    width:10px; height:14px; background:#000; border-radius:50%;
+  }
+  .ghost.g2 {width:40px; height:60px; animation-duration:35s; top:20%;}
+  .ghost.g3 {width:50px; height:70px; animation-duration:28s; top:40%;}
+  @keyframes drift {from{transform:translateX(-15vw);}to{transform:translateX(115vw);}}
+
+  /* Spider */
+  .spider {
+    position:fixed; left:85%; top:-140px; width:22px; height:22px;
     animation: drop 7s ease-in-out 1.5s infinite;
   }
-  .thread{
+  .thread {
     position:absolute; left:50%; top:-220px; width:2px; height:240px; transform:translateX(-50%);
-    background: linear-gradient(#777 0 0) center/2px 10px repeat-y;
+    background: repeating-linear-gradient(to bottom, #aaa 0 10px, transparent 10px 20px);
     opacity:.6;
   }
-  .body{
-    width:22px; height:22px; border-radius:50%;
-    background:#000;
-    border:2px solid var(--orange);
-    box-shadow: var(--glow);
-    position:relative;
+  .body {
+    width:22px; height:22px; border-radius:50%; background:#000;
+    border:2px solid var(--orange); box-shadow: var(--glow);
   }
-  .body::before,.body::after{
-    content:""; position:absolute; width:16px; height:2px; background:#000;
-    border-top:2px solid var(--orange); top:8px; left:-18px; transform-origin:right center;
-    box-shadow: 0 0 6px rgba(255,106,0,.4);
-  }
-  .body::after{ left:auto; right:-18px; transform-origin:left center; }
-  @keyframes drop{
-    0%{ transform: translateY(-160px) }
-    20%{ transform: translateY(20px) }
-    40%{ transform: translateY(0px) }
-    60%{ transform: translateY(18px) }
-    100%{ transform: translateY(-160px) }
+  @keyframes drop {
+    0%{transform:translateY(-160px);}
+    20%{transform:translateY(20px);}
+    40%{transform:translateY(0);}
+    60%{transform:translateY(18px);}
+    100%{transform:translateY(-160px);}
   }
 
-  /* Reduced motion support */
-  @media (prefers-reduced-motion: reduce){
-    *{ animation: none !important; transition: none !important }
-    .bg-halo{ display:none }
+  /* Confetti */
+  .confetti {
+    position:fixed; width:16px; height:16px;
+    background:orange;
+    clip-path: polygon(50% 0%, 100% 25%, 80% 100%, 20% 100%, 0% 25%);
+    pointer-events:none;
+    animation: fall linear forwards;
+  }
+  @keyframes fall {
+    to {transform:translateY(100vh) rotate(360deg); opacity:0;}
   }
 </style>
 </head>
 <body>
-  <div class="bg-halo" aria-hidden="true"></div>
-
   <!-- Flying bats -->
-  <div class="bat" aria-hidden="true"></div>
-  <div class="bat b2" aria-hidden="true"></div>
-  <div class="bat b3" aria-hidden="true"></div>
+  <div class="bat"></div>
+  <div class="bat b2"></div>
+  <div class="bat b3"></div>
 
-  <!-- Spider dropping on a thread -->
-  <div class="spider" aria-hidden="true">
+  <!-- Ghosts -->
+  <div class="ghost"><div class="eyes"><span></span><span></span></div></div>
+  <div class="ghost g2"><div class="eyes"><span></span><span></span></div></div>
+  <div class="ghost g3"><div class="eyes"><span></span><span></span></div></div>
+
+  <!-- Spider -->
+  <div class="spider">
     <div class="thread"></div>
-    <div class="body" title="(not a real spider… promise)"></div>
+    <div class="body"></div>
   </div>
 
-  <main class="wrap" role="main">
-    <section class="card" aria-live="polite">
+  <!-- Main content -->
+  <main class="wrap">
+    <section class="card">
       <h1>Gotcha!</h1>
-      <p class="subtle">
-        You clicked a link that <em>looked</em> like YouTube… but it wasn’t.
-        Don’t worry—this one’s for laughs and learning. 🎃
-      </p>
+      <p>You clicked a link that <em>looked</em> like YouTube… but it wasn’t.<br>
+      Don’t worry — this one is just for fun. 🎃</p>
 
       <div class="lesson">
-        Phishing works because links wear <strong>disguises</strong>.  
-        Treat every unexpected link like a costume—inspect it before you trust it.
+        Just like Halloween costumes hide identities, phishing disguises hide malicious links!
       </div>
 
-      <h2>⚠️ How Hackers Trick You</h2>
+      <h2>⚠️ How Hackers Trick You:</h2>
       <ul>
-        <li>Urgent messages (“approve now or lose access”).</li>
-        <li>Fake login pages that mimic trusted brands.</li>
-        <li>Links where the text says one thing but the URL goes elsewhere.</li>
+        <li>Spooky “urgent” messages 👀</li>
+        <li>Fake login pages that *look* real 🕵️</li>
+        <li>Links dressed up in disguises 🕸️</li>
       </ul>
 
-      <h2>🛡️ How to Stay Safe</h2>
+      <h2>🛡️ How to Stay Safe:</h2>
       <ul>
-        <li>Hover to preview the real URL before clicking.</li>
-        <li>Verify senders and requests via known channels.</li>
-        <li>Never share your password or MFA codes—ever.</li>
+        <li>Hover over links before clicking.</li>
+        <li>Double-check the sender’s address.</li>
+        <li>Never share your password — not even with IT!</li>
       </ul>
 
-      <a class="cta" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener">
+      <a class="cta" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
         Back to “Safety”
       </a>
 
-      <p class="footer">👻 Happy Halloween! Stay spooky, stay safe. — Your IT Team</p>
+      <p class="footer">👻 Happy Halloween! Stay spooky, stay safe. – Your IT Team 🎃</p>
     </section>
   </main>
+
+<script>
+  // Candy corn confetti on click
+  document.addEventListener("click", e => {
+    for(let i=0;i<12;i++){
+      const c=document.createElement("div");
+      c.className="confetti";
+      c.style.left = e.clientX+"px";
+      c.style.top = e.clientY+"px";
+      c.style.background = i%2 ? "orange" : "#ffd166";
+      c.style.animationDuration = (Math.random()*2+2)+"s";
+      c.style.transform = `translate(${(Math.random()-0.5)*300}px,0) rotate(${Math.random()*360}deg)`;
+      document.body.appendChild(c);
+      setTimeout(()=>c.remove(),4000);
+    }
+  });
+</script>
 </body>
 </html>
